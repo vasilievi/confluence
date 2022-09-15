@@ -25,20 +25,23 @@ alert(message);
 \`\`\`
 `;
 
+let editMode = false
+
 function App() {
   const [value, setValue] = React.useState(mkdStr);
   return (
     <div className="container">
-      <button className='btn btn-success'>Test bootstrap</button>
-      <MDEditor
-        value={value}
-        onChange={setValue} />
-
       <MDEditor.Markdown
         style={{ padding: 15 }}
         source={value}
         linkTarget="_blank"
       />
+      <MDEditor
+        value={value}
+        onChange={setValue} />
+      <div className='btn-group'></div>
+      <button className='btn btn-success'>Edit</button>
+      <button className='btn btn-warning'>Save</button>
     </div>
   );
 }
