@@ -25,9 +25,17 @@ alert(message);
 \`\`\`
 `;
 
-let editMode = false
+let editMode = true
 
-function App() {
+function EditButtons(props) {
+  if (props.editMode) {
+    return <button className='btn btn-success'>Edit</button>
+  } else {
+    return <button className='btn btn-danger'>Save</button>
+  }
+}
+
+function MarkDownEditor() {
   const [value, setValue] = React.useState(mkdStr);
   return (
     <div className="container">
@@ -40,11 +48,10 @@ function App() {
         value={value}
         onChange={setValue} />
       <div className='mt-3 btn-group'></div>
-      <button className='btn btn-success'>Edit</button>
-      <button className='btn btn-warning'>Save</button>
+      <EditButtons editMode = {editMode} />
     </div>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<MarkDownEditor />);
