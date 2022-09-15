@@ -39,7 +39,7 @@ function App() {
       <MDEditor
         value={value}
         onChange={setValue} />
-      <div className='btn-group'></div>
+      <div className='mt-3 btn-group'></div>
       <button className='btn btn-success'>Edit</button>
       <button className='btn btn-warning'>Save</button>
     </div>
