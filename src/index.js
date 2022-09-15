@@ -4,7 +4,7 @@ import MDEditor from "@uiw/react-md-editor";
 import 'bootstrap/dist/css/bootstrap.css';
 
 const mkdStr = `
-# Компьютер Сервис 3
+# Компьютер Сервис 4
 
 ---
 ## Картинка со ссылкой
