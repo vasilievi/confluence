@@ -3,24 +3,51 @@ import {
     useParams
 } from "react-router-dom";
 import MDEditor from "@uiw/react-md-editor";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default function ArticleView() {
     const [text, setText] = useState('# init text');
+    const [modified, setModified] = useState(false);
     let { path } = useParams();
 
     useEffect(() => {
         fetch(`https://confluence.cs-develop.ru/getArticle/${path}`)
             .then(response => response.json())
             .then((resJson) => setText(resJson.text));
-    }, []);
+    }, [path]);
+
+    function onChangeText(newText) {
+        setText(newText)
+        setModified(true)
+    }
+
+    function SaveButton() {
+        if (modified) {
+            return <button className='btn btn-warning' onClick={onSaveButtonClick}>Save</button>
+        }
+    }
+
+    function onSaveButtonClick() {
+        console.log('onSaveButtonClick');
+    }
+
+    function onViewModeClick() {
+        console.log('onViewModeClick');
+        window.location.href = '/view/' + path;
+    }
 
     return (
         <div>
-            <h3>Edit Article : {path}</h3>
+            <div>Edit mode : {path}</div>
+            <div className='btn-group m-3'>
+                <button className='btn btn-success' onClick={onViewModeClick}>View mode</button>
+                <SaveButton />
+            </div>
             <MDEditor
                 height={500}
                 value={text}
-                onChange={setText} />
+                onChange={onChangeText} />
         </div>
     );
 

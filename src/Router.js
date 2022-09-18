@@ -2,7 +2,6 @@ import {
   Routes,
   Route,
   BrowserRouter,
-  useParams
 } from "react-router-dom";
 
 import ArticleView from "./ArticleView"
@@ -21,24 +20,4 @@ export default function App() {
 }
 
 const Home = () => <h1>Welcome to confluence!</h1>;
-
-// const ArticleView = () => {
-//   let { path } = useParams();
-
-//   return (
-//     <div>
-//       <h3>View Article : {path}</h3>
-//     </div>
-//   );
-// }
-
-// const ArticleEdit = () => {
-//   let { path } = useParams();
-
-//   return (
-//     <div>
-//       <h3>Edit Article : {path}</h3>
-//     </div>
-//   );
-// }
 
