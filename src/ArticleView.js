@@ -19,12 +19,25 @@ export default function ArticleView() {
         window.location.href = '/edit/' + path;
     }
 
+    const hash = window.location.hash
+    useEffect(() => {
+        if (hash) {
+            console.log(hash);
+            const id = decodeURIComponent(hash.replace('#', ''));
+            const element = document.getElementById(id);
+            if (element) {
+                console.log(element);
+                element.scrollIntoView();
+            }
+        }
+    });
+
     return (
         <div>
             <div>View mode : {path}</div>
             <div className='btn-group m-3'>
                 <button className='btn btn-danger' onClick={onEditModeClick}>Edit mode</button>
-            </div>            
+            </div>
             <MDEditor.Markdown
                 style={{ padding: 15 }}
                 source={text}
