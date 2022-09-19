@@ -28,8 +28,20 @@ export default function ArticleView() {
         }
     }
 
-    function onSaveButtonClick() {
+    async function onSaveButtonClick() {
         console.log('onSaveButtonClick');
+        let res = await fetch(`https://confluence.cs-develop.ru/postArticle/${path}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({text: text})
+        });
+        let resJson = await res.json()
+        if(resJson){
+            if(resJson.success) setModified(false)
+        }
+        console.log(resJson);
     }
 
     function onViewModeClick() {
