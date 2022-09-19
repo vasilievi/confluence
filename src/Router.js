@@ -3,6 +3,8 @@ import {
   Route,
   BrowserRouter,
 } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 import ArticleView from "./ArticleView"
 import ArticleEdit from "./ArticleEdit"

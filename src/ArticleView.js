@@ -3,6 +3,8 @@ import {
     useParams
 } from "react-router-dom";
 import MDEditor from "@uiw/react-md-editor";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export default function ArticleView() {
     const [text, setText] = useState('# init text');
