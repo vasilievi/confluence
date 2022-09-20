@@ -24,7 +24,7 @@ export default function ArticleView() {
 
     function SaveButton() {
         if (modified) {
-            return <button className='btn btn-outline-warning' onClick={onSaveButtonClick}>Save</button>
+            return <button className='btn btn-warning' onClick={onSaveButtonClick}>Save</button>
         }
     }
 
