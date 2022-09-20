@@ -39,6 +39,7 @@ export default function ArticleView() {
             <div className='btn-group m-3'>
                 <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
             </div>
+            <hr></hr>
             <MDEditor.Markdown
                 style={{ padding: 15 }}
                 source={text}

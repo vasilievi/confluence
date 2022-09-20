@@ -55,6 +55,7 @@ export default function ArticleView() {
                 <button className='btn btn-outline-success' onClick={onViewModeClick}>View mode</button>
                 <SaveButton />
             </div>
+            <hr></hr>
             <MDEditor
                 height={500}
                 value={text}
