@@ -12,7 +12,7 @@ export default function ArticleView() {
     let { path } = useParams();
 
     useEffect(() => {
-        fetch(`https://confluence.cs-develop.ru/getArticle/${path}`)
+        fetch(`${process.env.REACT_APP_HOST}/getArticle/${path}`)
             .then(response => response.json())
             .then((resJson) => setText(resJson.text));
     }, [path]);
@@ -30,7 +30,7 @@ export default function ArticleView() {
 
     async function onSaveButtonClick() {
         console.log('onSaveButtonClick');
-        let res = await fetch(`https://confluence.cs-develop.ru/postArticle/${path}`, {
+        let res = await fetch(`${process.env.REACT_APP_HOST}/postArticle/${path}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

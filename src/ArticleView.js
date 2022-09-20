@@ -11,7 +11,7 @@ export default function ArticleView() {
     let { path } = useParams();
 
     useEffect(() => {
-        fetch(`https://confluence.cs-develop.ru/getArticle/${path}`)
+        fetch(`${process.env.REACT_APP_HOST}/getArticle/${path}`)
             .then(response => response.json())
             .then((resJson) => setText(resJson.text));
     }, [path]);

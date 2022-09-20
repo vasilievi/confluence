@@ -22,5 +22,10 @@ export default function App() {
   );
 }
 
-const Home = () => <h1>Welcome to confluence!</h1>;
+const Home = () => {
+  return <div>
+    <h1>Welcome to confluence!</h1>
+    <img src="https://cs-develop.ru/files/20220920/1663648922578_cat_programmist.gif" alt="кот программист"></img>
+  </div>
+};
 
