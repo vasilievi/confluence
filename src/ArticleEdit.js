@@ -51,7 +51,6 @@ export default function ArticleView() {
 
     return (
         <div>
-            <div>Edit mode : {path}</div>
             <div className='btn-group m-3'>
                 <button className='btn btn-outline-success' onClick={onViewModeClick}>View mode</button>
                 <SaveButton />

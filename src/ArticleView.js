@@ -36,7 +36,6 @@ export default function ArticleView() {
 
     return (
         <div>
-            <div>View mode : {path}</div>
             <div className='btn-group m-3'>
                 <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
             </div>
