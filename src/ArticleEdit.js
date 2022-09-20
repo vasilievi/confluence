@@ -53,7 +53,7 @@ export default function ArticleView() {
         <div>
             <div>Edit mode : {path}</div>
             <div className='btn-group m-3'>
-                <button className='btn btn-success' onClick={onViewModeClick}>View mode</button>
+                <button className='btn btn-outline-success' onClick={onViewModeClick}>View mode</button>
                 <SaveButton />
             </div>
             <MDEditor
