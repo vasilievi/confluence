@@ -35,19 +35,6 @@ export default function ArticleView() {
         }
     });
 
-    const css = `
-    .wmde-markdown img {
-        border-style: solid;
-        border-color: bisque;
-        border-radius: 10px;
-        margin-top: 5px
-    }
-
-    .wmde-markdown h2 {
-        color: teal;
-    }
-    `
-
     return (
         <div style={{'display': 'flex', 'justifyContent': 'center', }}>
             <div style={{ 'maxWidth': '1000px' }}>
@@ -60,7 +47,6 @@ export default function ArticleView() {
                     source={text}
                     linkTarget="_blank"
                 />
-                <style>{css}</style>
             </div>
         </div>
     );

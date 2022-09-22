@@ -9,6 +9,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ArticleView from "./ArticleView"
 import ArticleEdit from "./ArticleEdit"
 
+const css = `
+.wmde-markdown img {
+    border-style: solid;
+    border-color: bisque;
+    border-radius: 10px;
+    margin-top: 5px
+}
+
+.wmde-markdown h2 {
+    color: teal;
+}
+`
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -19,6 +32,7 @@ export default function App() {
       </Routes>
       <hr></hr>
       <div className="badge bg-primary m-3">v.22.09.21</div>
+      <style>{css}</style>
     </BrowserRouter>
   );
 }
