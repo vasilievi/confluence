@@ -41,6 +41,10 @@ export default function ArticleView() {
         border-radius: 10px;
         margin-top: 5px
     }
+
+    .wmde-markdown h2 {
+        color: teal;
+    }
     `
 
     return (
