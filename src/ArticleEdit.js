@@ -10,6 +10,7 @@ export default function ArticleView() {
     const [text, setText] = useState('# init text');
     const [modified, setModified] = useState(false);
     let { path } = useParams();
+    document.title = 'Edit mode: ' + path
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_HOST}/getArticle/${path}`)
