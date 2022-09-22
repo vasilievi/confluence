@@ -34,17 +34,29 @@ export default function ArticleView() {
         }
     });
 
+    const css = `
+    .wmde-markdown img {
+        border-style: solid;
+        border-color: bisque;
+        border-radius: 10px;
+        margin-top: 5px
+    }
+    `
+
     return (
-        <div>
-            <div className='btn-group m-3'>
-                <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
+        <div style={{'display': 'flex', 'justifyContent': 'center', }}>
+            <div style={{ 'maxWidth': '1000px' }}>
+                <div className='btn-group m-3'>
+                    <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
+                </div>
+                <hr></hr>
+                <MDEditor.Markdown
+                    style={{ padding: 15 }}
+                    source={text}
+                    linkTarget="_blank"
+                />
+                <style>{css}</style>
             </div>
-            <hr></hr>
-            <MDEditor.Markdown
-                style={{ padding: 15 }}
-                source={text}
-                linkTarget="_blank"
-            />
         </div>
     );
 
