@@ -36,19 +36,24 @@ export default function ArticleView() {
     });
 
     return (
-        <div>
-            <div style={{ 'maxWidth': '900px'}}>
+        <div className='row'>
+            <div className='col-lg'></div>
+            <div style={{ 'maxWidth': '900px' }}>
                 <div className='btn-group m-3'>
                     <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
                 </div>
-                <hr></hr>
-                <MDEditor.Markdown
-                    style={{ padding: 15 }}
-                    source={text}
-                    linkTarget="_blank"
-                />
+                <div className='shadow-lg p-3 mb-5 bg-white rounded' >
+                    <hr></hr>
+                    <MDEditor.Markdown
+                        style={{ padding: 15 }}
+                        source={text}
+                        linkTarget="_blank"
+                    />
+                </div>
             </div>
+            <div className='col-lg'></div>
         </div>
+
     );
 
 }
