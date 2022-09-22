@@ -36,7 +36,7 @@ export default function ArticleView() {
     });
 
     return (
-            <div style={{ 'maxWidth': '1000px' }}>
+            <div style={{ 'maxWidth': '900px' }}>
                 <div className='btn-group m-3'>
                     <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
                 </div>
