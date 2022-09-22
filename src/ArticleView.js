@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 export default function ArticleView() {
     const [text, setText] = useState('# init text');
     let { path } = useParams();
+    document.title = path
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_HOST}/getArticle/${path}`)
