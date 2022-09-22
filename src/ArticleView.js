@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 export default function ArticleView() {
-    const [text, setText] = useState('# init text');
+    const [text, setText] = useState('## loading ...');
     let { path } = useParams();
     document.title = path
 

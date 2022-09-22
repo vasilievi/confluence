@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 export default function ArticleView() {
-    const [text, setText] = useState('# init text');
+    const [text, setText] = useState('## loading ...');
     const [modified, setModified] = useState(false);
     let { path } = useParams();
     document.title = 'Edit mode: ' + path
