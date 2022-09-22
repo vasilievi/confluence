@@ -36,7 +36,6 @@ export default function ArticleView() {
     });
 
     return (
-        <div style={{'display': 'flex', 'justifyContent': 'center', }}>
             <div style={{ 'maxWidth': '1000px' }}>
                 <div className='btn-group m-3'>
                     <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
@@ -48,7 +47,6 @@ export default function ArticleView() {
                     linkTarget="_blank"
                 />
             </div>
-        </div>
     );
 
 }
