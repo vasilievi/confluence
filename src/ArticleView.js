@@ -4,11 +4,28 @@ import {
 } from "react-router-dom";
 import MDEditor from "@uiw/react-md-editor";
 import 'bootstrap/dist/css/bootstrap.css';
+import io from 'socket.io-client';
 
 
 export default function ArticleView() {
     const [text, setText] = useState('## loading ...');
+    //const [blockedArticle, setblockedArticle] = useState(false);
     let { path } = useParams();
+
+    const socket = io(process.env.REACT_APP_HOST);
+    socket.on("connect", () => {
+        console.log("connect");
+        socket.emit('viewArticle', path);
+    });
+
+    socket.on("blockedArticle", (articlePath) => {
+        console.log("blockedArticle " + articlePath);
+    });
+
+    socket.on("unBlockedArticle", (articlePath) => {
+        console.log("unBlockedArticle " + articlePath);
+    });
+
     document.title = path
 
     useEffect(() => {
