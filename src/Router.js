@@ -31,7 +31,7 @@ export default function App() {
         <Route path="/edit/:path" element={<ArticleEdit />} />
       </Routes>
       <hr></hr>
-      <div className="badge bg-primary m-3">v.22.09.22.2</div>
+      <div className="badge bg-primary m-3">v.22.09.23</div>
       <style>{css}</style>
     </BrowserRouter>
   );

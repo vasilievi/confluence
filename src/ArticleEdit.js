@@ -13,7 +13,7 @@ export default function ArticleView() {
 
     const socket = io(process.env.REACT_APP_HOST);
     socket.on("connect", () => {
-        socket.emit('editArticle', path);
+        console.log('connected');
     });
 
     document.title = 'Edit mode: ' + path
@@ -25,6 +25,7 @@ export default function ArticleView() {
     }, [path]);
 
     function onChangeText(newText) {
+        if(!modified) socket.emit('editArticle', path); 
         setText(newText)
         setModified(true)
     }

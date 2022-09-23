@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 
 export default function ArticleView() {
     const [text, setText] = useState('## loading ...');
-    //const [blockedArticle, setblockedArticle] = useState(false);
+    const [articleState, setArticleState] = useState('unblocked');
     let { path } = useParams();
 
     const socket = io(process.env.REACT_APP_HOST);
@@ -18,12 +18,18 @@ export default function ArticleView() {
         socket.emit('viewArticle', path);
     });
 
-    socket.on("blockedArticle", (articlePath) => {
-        console.log("blockedArticle " + articlePath);
+    socket.on("blockedArticle", (blockedArticlePath) => {
+        console.log("blockedArticle " + blockedArticlePath);
+        if (path === blockedArticlePath) {
+            setArticleState('blocked')
+        }
     });
 
-    socket.on("unBlockedArticle", (articlePath) => {
-        console.log("unBlockedArticle " + articlePath);
+    socket.on("unBlockedArticle", (unBlockedArticlePath) => {
+        console.log("unBlockedArticle " + unBlockedArticlePath);
+        if (path === unBlockedArticlePath) {
+            setArticleState('unblocked')
+        }
     });
 
     document.title = path
@@ -52,12 +58,19 @@ export default function ArticleView() {
         }
     });
 
+    function EditButton() {
+        if (articleState === 'unblocked') {
+            return <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
+        }
+        return <h3>Blocked</h3>
+    }
+
     return (
         <div className='row'>
             <div className='col-lg'></div>
             <div style={{ 'maxWidth': '900px' }}>
                 <div className='btn-group m-3'>
-                    <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
+                    <EditButton />
                 </div>
                 <div className='shadow-lg p-3 mb-5 bg-white rounded' >
                     <hr></hr>
