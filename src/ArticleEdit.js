@@ -8,12 +8,32 @@ import io from 'socket.io-client';
 
 export default function ArticleView() {
     const [text, setText] = useState('## loading ...');
+    const [articleState, setArticleState] = useState('unblocked');
     const [modified, setModified] = useState(false);
     let { path } = useParams();
 
     const socket = io(process.env.REACT_APP_HOST);
     socket.on("connect", () => {
-        console.log('connected');
+        console.log("connect");
+        socket.emit('viewArticle', path);
+    });
+
+    socket.on("blockedArticle", (blockedArticlePath) => {
+        console.log("blockedArticle " + blockedArticlePath);
+        if (path === blockedArticlePath && !modified) {
+            setArticleState('blocked')
+        }
+    });
+
+    socket.on("unBlockedArticle", async (unBlockedArticlePath) => {
+        console.log("unBlockedArticle " + unBlockedArticlePath);
+        if (path === unBlockedArticlePath) {
+            await fetch(`${process.env.REACT_APP_HOST}/getArticle/${path}`)
+            .then(response => response.json())
+            .then((resJson) => setText(resJson.text));
+
+            setArticleState('unblocked')
+        }
     });
 
     document.title = 'Edit mode: ' + path
@@ -25,15 +45,15 @@ export default function ArticleView() {
     }, [path]);
 
     function onChangeText(newText) {
-        if(!modified) socket.emit('editArticle', path); 
+        if (!modified && articleState === 'unblocked') {
+            setModified(true)
+            socket.emit('editArticle', path);
+        }
         setText(newText)
-        setModified(true)
     }
 
     function SaveButton() {
-        if (modified) {
-            return <button className='btn btn-warning' onClick={onSaveButtonClick}>Save</button>
-        }
+        if (modified) return <button className='btn btn-warning' onClick={onSaveButtonClick}>Save</button>
     }
 
     async function onSaveButtonClick() {
@@ -43,11 +63,11 @@ export default function ArticleView() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({text: text})
+            body: JSON.stringify({ text: text })
         });
         let resJson = await res.json()
-        if(resJson){
-            if(resJson.success) {
+        if (resJson) {
+            if (resJson.success) {
                 setModified(false)
                 socket.emit('savedArticle', path);
             }
@@ -65,6 +85,7 @@ export default function ArticleView() {
             <div className='btn-group m-3'>
                 <button className='btn btn-outline-success' onClick={onViewModeClick}>View mode</button>
                 <SaveButton />
+                <p className='m-1'>{articleState}</p>
             </div>
             <hr></hr>
             <MDEditor

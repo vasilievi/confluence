@@ -62,7 +62,6 @@ export default function ArticleView() {
         if (articleState === 'unblocked') {
             return <button className='btn btn-outline-danger' onClick={onEditModeClick}>Edit mode</button>
         }
-        return <h3>Blocked</h3>
     }
 
     return (
@@ -71,6 +70,7 @@ export default function ArticleView() {
             <div style={{ 'maxWidth': '900px' }}>
                 <div className='btn-group m-3'>
                     <EditButton />
+                    <p className='m-1'>{articleState}</p>
                 </div>
                 <div className='shadow-lg p-3 mb-5 bg-white rounded' >
                     <hr></hr>
