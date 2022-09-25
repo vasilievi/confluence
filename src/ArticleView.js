@@ -70,7 +70,7 @@ export default function ArticleView() {
             <div style={{ 'maxWidth': '900px' }}>
                 <div className='btn-group m-3'>
                     <EditButton />
-                    <p className='m-1'>{articleState}</p>
+                    <button className='btn btn-outline-secondary' disabled>{articleState}</button>
                 </div>
                 <div className='shadow-lg p-3 mb-5 bg-white rounded' >
                     <hr></hr>

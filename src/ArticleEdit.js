@@ -85,7 +85,7 @@ export default function ArticleView() {
             <div className='btn-group m-3'>
                 <button className='btn btn-outline-success' onClick={onViewModeClick}>View mode</button>
                 <SaveButton />
-                <p className='m-1'>{articleState}</p>
+                <button className='btn btn-outline-secondary' disabled>{articleState}</button>
             </div>
             <hr></hr>
             <MDEditor
