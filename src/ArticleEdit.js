@@ -6,13 +6,14 @@ import MDEditor from "@uiw/react-md-editor";
 import 'bootstrap/dist/css/bootstrap.css';
 import io from 'socket.io-client';
 
+const socket = io(process.env.REACT_APP_HOST);
+
 export default function ArticleView() {
     const [text, setText] = useState('## loading ...');
     const [articleState, setArticleState] = useState('unblocked');
     const [modified, setModified] = useState(false);
     let { path } = useParams();
 
-    const socket = io(process.env.REACT_APP_HOST);
     socket.on("connect", () => {
         console.log("connect");
         socket.emit('viewArticle', path);
