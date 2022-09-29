@@ -15,7 +15,6 @@ const css = `
     border-color: bisque;
     border-radius: 10px;
     margin-top: 5px;
-    height: 400px
 }
 
 .wmde-markdown h2 {
