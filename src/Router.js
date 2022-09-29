@@ -20,6 +20,10 @@ const css = `
 .wmde-markdown h2 {
     color: teal;
 }
+
+.wmde-markdown h3 {
+color: chocolate;
+}
 `
 
 export default function App() {
@@ -31,7 +35,7 @@ export default function App() {
         <Route path="/edit/:path" element={<ArticleEdit />} />
       </Routes>
       <hr></hr>
-      <div className="badge bg-primary m-3">v.22.09.25</div>
+      <div className="badge bg-primary m-3">v.22.09.29</div>
       <style>{css}</style>
     </BrowserRouter>
   );
