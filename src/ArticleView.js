@@ -47,14 +47,17 @@ export default function ArticleView() {
 
     const hash = window.location.hash
     useEffect(() => {
+
         if (hash) {
-            console.log(hash);
-            const id = decodeURIComponent(hash.replace('#', ''));
-            const element = document.getElementById(id);
-            if (element) {
-                console.log(element);
-                element.scrollIntoView();
-            }
+            setTimeout(() => {
+                console.log(hash);
+                const id = decodeURIComponent(hash.replace('#', ''));
+                const element = document.getElementById(id);
+                if (element) {
+                    console.log(element);
+                    element.scrollIntoView();
+                }
+            }, 1000);
         }
     });
 
