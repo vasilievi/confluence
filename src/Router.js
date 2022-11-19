@@ -14,7 +14,7 @@ const css = `
     border-style: solid;
     border-color: bisque;
     border-radius: 10px;
-    margin-top: 5px
+    margin-top: 5px;
 }
 
 .wmde-markdown h2 {
@@ -65,6 +65,8 @@ const css = `
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+.wmde-markdown h3 {
+color: chocolate;
 }
 `
 

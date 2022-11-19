@@ -6,13 +6,13 @@ import MDEditor from "@uiw/react-md-editor";
 import 'bootstrap/dist/css/bootstrap.css';
 import io from 'socket.io-client';
 
+const socket = io(process.env.REACT_APP_HOST);
 
 export default function ArticleView() {
     const [text, setText] = useState('## loading ...');
     const [articleState, setArticleState] = useState('unblocked');
     let { path } = useParams();
 
-    const socket = io(process.env.REACT_APP_HOST);
     socket.on("connect", () => {
         console.log("connect");
         socket.emit('viewArticle', path);
@@ -47,14 +47,17 @@ export default function ArticleView() {
 
     const hash = window.location.hash
     useEffect(() => {
+
         if (hash) {
-            console.log(hash);
-            const id = decodeURIComponent(hash.replace('#', ''));
-            const element = document.getElementById(id);
-            if (element) {
-                console.log(element);
-                element.scrollIntoView();
-            }
+            setTimeout(() => {
+                console.log(hash);
+                const id = decodeURIComponent(hash.replace('#', ''));
+                const element = document.getElementById(id);
+                if (element) {
+                    console.log(element);
+                    element.scrollIntoView();
+                }
+            }, 1000);
         }
     });
 
