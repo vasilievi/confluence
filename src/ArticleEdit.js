@@ -60,7 +60,7 @@ export default function ArticleView() {
         let snackbarElement = document.getElementById("snackbar");
         snackbarElement.innerText = text
         snackbarElement.className = "show";
-        setTimeout(function(){ snackbarElement.className = snackbarElement.className.replace("show", ""); }, 3000);
+        setTimeout(function () { snackbarElement.className = snackbarElement.className.replace("show", ""); }, 3000);
     }
 
     function SaveButton() {
@@ -110,7 +110,7 @@ export default function ArticleView() {
             }
         }
 
-        if (modified) return (
+        return (
             <div>
                 <input type="file" id="inputFile" style={{ display: "none" }} onChange={onChangeInputFile} />
                 <button className='btn btn-primary' onClick={onClickUploadButton}>Upload file</button>

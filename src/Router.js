@@ -78,7 +78,7 @@ export default function App() {
         <Route path="/view/:path" element={<ArticleView />} />
         <Route path="/edit/:path" element={<ArticleEdit />} />
       </Routes>
-      <div className="badge bg-primary m-3">v.22.11.19</div>
+      <div className="badge bg-primary m-3">v.22.11.20</div>
       <style>{css}</style>
     </BrowserRouter>
   );
