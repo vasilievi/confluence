@@ -17,8 +17,16 @@ const css = `
     margin-top: 5px;
 }
 
+.wmde-markdown h1 {
+  color: indianred;
+}
+
 .wmde-markdown h2 {
     color: teal;
+}
+
+.wmde-markdown h3 {
+  color: darkgoldenrod;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
@@ -78,7 +86,7 @@ export default function App() {
         <Route path="/view/:path" element={<ArticleView />} />
         <Route path="/edit/:path" element={<ArticleEdit />} />
       </Routes>
-      <div className="badge bg-primary m-3">v.22.11.20</div>
+      <div className="badge bg-primary m-3">v.22.11.29</div>
       <style>{css}</style>
     </BrowserRouter>
   );
