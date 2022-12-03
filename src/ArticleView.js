@@ -12,6 +12,7 @@ export default function ArticleView() {
     const [text, setText] = useState('## loading ...');
     const [articleState, setArticleState] = useState('unblocked');
     let { path } = useParams();
+    const hash = window.location.hash
 
     socket.on("connect", () => {
         console.log("connect");
@@ -38,28 +39,41 @@ export default function ArticleView() {
         fetch(`${process.env.REACT_APP_HOST}/getArticle/${path}`)
             .then(response => response.json())
             .then((resJson) => setText(resJson.text));
-    }, [path]);
+
+        if (hash) {
+            scrollToHash(1000)
+        }
+    });
+
 
     function onEditModeClick() {
         console.log('onEditModeClick');
         window.location.href = '/edit/' + path;
     }
 
-    const hash = window.location.hash
-    useEffect(() => {
-
-        if (hash) {
-            setTimeout(() => {
-                console.log(hash);
-                const id = decodeURIComponent(hash.replace('#', ''));
-                const element = document.getElementById(id);
-                if (element) {
-                    console.log(element);
-                    element.scrollIntoView();
-                }
-            }, 1000);
+    const onClick = (e) => {
+        console.log('onClick');
+        if (e.target.tagName.toLowerCase() === 'a' &&
+            window.location.hostname === e.target.hostname &&
+            window.location.pathname === e.target.pathname) {
+            e.preventDefault();
+            window.location.hash = e.target.hash
         }
-    });
+    }
+
+
+
+    const scrollToHash = (timeout) => {
+        setTimeout(() => {
+            console.log(hash);
+            const id = decodeURIComponent(hash.replace('#', ''));
+            const element = document.getElementById(id);
+            if (element) {
+                console.log(element);
+                element.scrollIntoView();
+            }
+        }, timeout);
+    }
 
     function EditButton() {
         if (articleState === 'unblocked') {
@@ -75,7 +89,7 @@ export default function ArticleView() {
                     <EditButton />
                     <button className='btn btn-outline-secondary' disabled>{articleState}</button>
                 </div>
-                <div className='shadow-lg p-3 mb-5 bg-white rounded' >
+                <div className='shadow-lg p-3 mb-5 bg-white rounded' onClick={onClick} >
                     <hr></hr>
                     <MDEditor.Markdown
                         style={{ padding: 15 }}
