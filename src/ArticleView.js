@@ -43,6 +43,12 @@ export default function ArticleView() {
         if (hash) {
             scrollToHash(1000)
         }
+
+        let tableElements = document.getElementsByTagName('table')
+        for (const table of tableElements) {
+            table.classList.add('table')
+            table.classList.add('table-responsive')
+        }
     });
 
 

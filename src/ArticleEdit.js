@@ -46,6 +46,11 @@ export default function ArticleView() {
             .then(response => response.json())
             .then((resJson) => setText(resJson.text));
         setScreenHeight(window.screen.height - 250)
+
+        let textareaElements = document.getElementsByTagName('textarea')
+        for (const textarea of textareaElements) {
+            textarea.spellcheck = true
+        }
     }, [path]);
 
     function onChangeText(newText) {
